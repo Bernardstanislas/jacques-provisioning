@@ -1,0 +1,7 @@
+---
+- name: Add team ssh keys to the authorized_keys
+  authorized_key:
+    user: "{{ ansible_user }}"
+    state: present
+    key: "https://github.com/{{ item }}.keys"
+  with_items: "{{ team_ssh_users }}"
