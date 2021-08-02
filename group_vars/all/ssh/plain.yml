@@ -1,4 +1,3 @@
 ---
 
-ssh_port: 3388
 security_ssh_port: "{{ ssh_port }}"

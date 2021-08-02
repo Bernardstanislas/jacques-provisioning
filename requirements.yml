@@ -3,4 +3,3 @@
 roles:
   - geerlingguy.firewall
   - geerlingguy.security
-  - geerlingguy.ntp
