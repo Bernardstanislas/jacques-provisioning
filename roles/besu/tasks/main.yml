@@ -4,9 +4,9 @@
     name: unzip
     state: present
 
-- name: Download Bezu binaries
+- name: Download Besu binaries
   unarchive:
-    src: "{{ bezu_url }}"
+    src: "{{ besu_url }}"
     remote_src: yes
     creates: "/home/{{ ansible_user }}/besu-22.1.3"
     dest: "/home/{{ ansible_user }}"
