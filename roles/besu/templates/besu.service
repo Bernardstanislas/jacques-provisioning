@@ -1,0 +1,17 @@
+[Unit]
+Description=besu
+After=network-online.target
+
+[Service]
+Type=simple
+
+User={{ ansible_user }}
+Group={{ ansible_user }}
+
+ExecStart=/usr/local/bin/besu --config-file /home/{{ ansible_user }}/besu.config.toml
+
+Restart=on-failure
+TimeoutStopSec=30
+
+[Install]
+WantedBy=multi-user.target

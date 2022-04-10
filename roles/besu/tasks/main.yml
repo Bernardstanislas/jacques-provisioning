@@ -19,9 +19,27 @@
     dest: /usr/local/bin/besu
     mode: 0755
 
+- name: Create data dir
+  file:
+    path: /home/{{ ansible_user }}/besudata
+    state: directory
+    mode: 0755
+
+- name: Create config file
+  template:
+    src: besu.config.toml
+    dest: "/home/{{ ansible_user }}/besu.config.toml"
+  notify: restart besu
+
+- name: Create jwt secret file
+  template:
+    src: jwtsecret.hex
+    dest: "/home/{{ ansible_user }}/jwtsecret.hex"
+  notify: restart besu
+
 - name: Create service file
   template:
-    src: besu.service.j2
+    src: besu.service
     dest: "/etc/systemd/system/besu.service"
   notify: restart besu
 

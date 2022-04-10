@@ -1,0 +1,22 @@
+# Valid TOML config file
+data-path="/home/{{ ansible_user }}/besudata" # Path
+
+# Network
+network="kiln"
+
+rpc-http-enabled=true
+rpc-http-host="127.0.0.1"
+rpc-http-cors-origins=["*"]
+host-allowlist=["*"]
+
+rpc-ws-enabled=true
+rpc-ws-host="127.0.0.1"
+
+# Engine
+
+engine-host-allowlist=["*"]
+engine-jwt-enabled=true
+engine-rpc-http-port=8550
+engine-rpc-ws-port=8551
+Xmerge-support=true
+engine-jwt-secret="/home/{{ ansible_user }}/jwtsecret.hex"
