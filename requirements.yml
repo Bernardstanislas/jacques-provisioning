@@ -1,5 +1,5 @@
 ---
-
 roles:
   - geerlingguy.firewall
   - geerlingguy.security
+  - geerlingguy.java

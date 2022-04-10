@@ -4,3 +4,4 @@
   roles:
     - role: geerlingguy.firewall
     - role: geerlingguy.security
+    - role: geerlingguy.java
