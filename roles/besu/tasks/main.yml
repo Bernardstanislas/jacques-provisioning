@@ -18,3 +18,15 @@
     src: "/home/{{ ansible_user }}/besu-22.1.3/bin/besu"
     dest: /usr/local/bin/besu
     mode: 0755
+
+- name: Create service file
+  template:
+    src: besu.service.j2
+    dest: "/etc/systemd/system/besu.service"
+  notify: restart besu
+
+- name: Enable service
+  systemd:
+    name: besu
+    daemon_reload: yes
+    enabled: true

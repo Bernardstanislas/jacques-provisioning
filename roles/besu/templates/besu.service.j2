@@ -1,0 +1,17 @@
+[Unit]
+Description=besu
+After=network-online.target
+
+[Service]
+Type=simple
+
+User={{ ansible_user }}
+Group={{ ansible_user }}
+
+ExecStart=/usr/local/bin/besu --network=dev --miner-enabled --miner-coinbase=0xfe3b557e8fb62b89f4916b721be55ceb828dbd73 --rpc-http-cors-origins="all" --host-allowlist="*" --rpc-ws-enabled --rpc-http-enabled --data-path=/tmp/tmpDatdir
+
+Restart=on-failure
+TimeoutStopSec=30
+
+[Install]
+WantedBy=multi-user.target
