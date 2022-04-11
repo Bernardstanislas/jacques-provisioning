@@ -6,3 +6,4 @@
     - role: geerlingguy.security
     - role: geerlingguy.java
     - role: besu
+    - role: teku

@@ -1,0 +1,14 @@
+# Valid TOML config file
+data-path: "/home/{{ ansible_user }}/tekudata" # Path
+
+# Network
+network: "kiln"
+
+p2p-discovery-bootnodes:
+  - "enr:-Iq4QMCTfIMXnow27baRUb35Q8iiFHSIDBJh6hQM5Axohhf4b6Kr_cOCu0htQ5WvVqKvFgY28893DHAg8gnBAXsAVqmGAX53x8JggmlkgnY0gmlwhLKAlv6Jc2VjcDI1NmsxoQK6S-Cii_KmfFdUJL2TANL3ksaKUnNXvTCv1tLwXs0QgIN1ZHCCIyk"
+
+ee-endpoint: "http://localhost:8550"
+Xee-version: "kilnv2"
+ee-jwt-secret-file: "/home/{{ ansible_user }}/jwtsecret.hex"
+log-destination: "console"
+validators-proposer-default-fee-recipient: "0xFBBe21D4961d52995507eEdFFAd0d269555C6A1e"

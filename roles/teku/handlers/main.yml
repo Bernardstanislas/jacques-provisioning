@@ -1,0 +1,5 @@
+---
+- name: restart teku
+  service:
+    name: teku
+    state: restarted

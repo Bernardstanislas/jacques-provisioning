@@ -4,24 +4,24 @@
     name: unzip
     state: present
 
-- name: Download Besu binaries
+- name: Download  binaries
   unarchive:
-    src: "{{ besu_url }}"
+    src: "{{ teku_url }}"
     remote_src: yes
-    creates: "/home/{{ ansible_user }}/besu-22.1.3"
+    creates: "/home/{{ ansible_user }}/teku-22.4.0"
     dest: "/home/{{ ansible_user }}"
     mode: 0755
 
 - name: Create alias bin in /usr/local/bin
   file:
     state: link
-    src: "/home/{{ ansible_user }}/besu-22.1.3/bin/besu"
-    dest: /usr/local/bin/besu
+    src: "/home/{{ ansible_user }}/teku-22.4.0/bin/teku"
+    dest: /usr/local/bin/teku
     mode: 0755
 
 - name: Create data dir
   file:
-    path: /home/{{ ansible_user }}/besudata
+    path: /home/{{ ansible_user }}/tekudata
     state: directory
     owner: "{{ ansible_user }}"
     group: "{{ ansible_user }}"
@@ -29,24 +29,24 @@
 
 - name: Create config file
   template:
-    src: besu.config.toml
-    dest: "/home/{{ ansible_user }}/besu.config.toml"
-  notify: restart besu
+    src: teku.config.yml
+    dest: "/home/{{ ansible_user }}/teku.config.yml"
+  notify: restart teku
 
 - name: Create jwt secret file
   template:
     src: jwtsecret.hex
     dest: "/home/{{ ansible_user }}/jwtsecret.hex"
-  notify: restart besu
+  notify: restart teku
 
 - name: Create service file
   template:
-    src: besu.service
-    dest: "/etc/systemd/system/besu.service"
-  notify: restart besu
+    src: teku.service
+    dest: "/etc/systemd/system/teku.service"
+  notify: restart teku
 
 - name: Enable service
   systemd:
-    name: besu
+    name: teku
     daemon_reload: yes
     enabled: true

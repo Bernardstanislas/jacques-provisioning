@@ -1,0 +1,17 @@
+[Unit]
+Description=teku
+After=network-online.target
+
+[Service]
+Type=simple
+
+User={{ ansible_user }}
+Group={{ ansible_user }}
+
+ExecStart=/usr/local/bin/teku --config-file /home/{{ ansible_user }}/teku.config.yml
+
+Restart=on-failure
+TimeoutStopSec=30
+
+[Install]
+WantedBy=multi-user.target
